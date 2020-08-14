@@ -39,8 +39,8 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
                 new Intent[]{backIntent, intent},
                 PendingIntent.FLAG_ONE_SHOT);
         Uri defaultSoundUri = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
-        NotificationCompat.Builder notificationBuilder = new NotificationCompat.Builder(this)
-                .setSmallIcon(R.mipmap.ic_launcher)
+        final NotificationCompat.Builder notificationBuilder = new NotificationCompat.Builder(this, messageBody.getNotification().getChannelId())
+                .setSmallIcon()
                 .setVibrate(new long[]{500, 1000, 500, 1000})
                 .setPriority(2)
                 .setContentTitle(messageBody.getNotification().getTitle())
