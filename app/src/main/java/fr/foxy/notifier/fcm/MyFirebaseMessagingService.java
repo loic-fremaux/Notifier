@@ -6,7 +6,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.media.RingtoneManager;
 import android.net.Uri;
-import android.util.Log;
 
 import androidx.core.app.NotificationCompat;
 
@@ -16,7 +15,6 @@ import com.google.firebase.messaging.RemoteMessage;
 import java.util.Map;
 
 import fr.foxy.notifier.MainActivity;
-import fr.foxy.notifier.R;
 
 public class MyFirebaseMessagingService extends FirebaseMessagingService {
 

@@ -1,17 +1,13 @@
 package fr.foxy.notifier;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-
-import android.app.NotificationChannel;
-import android.app.NotificationManager;
 import android.content.Context;
 import android.content.Intent;
-import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
-import android.widget.Button;
 import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -31,11 +27,12 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         FirebaseApp.initializeApp(this);
         Intent i = getIntent();
+        /*
         if (i.getExtras() != null) {
             String notificationValue = i.getStringExtra("value");
             Intent intent = SecondActivity.getIntent(this, notificationValue);
             startActivity(intent);
-        }
+        }*/
 
         FirebaseInstanceId.getInstance().getInstanceId()
                 .addOnCompleteListener(new OnCompleteListener<InstanceIdResult>() {
@@ -57,6 +54,10 @@ public class MainActivity extends AppCompatActivity {
                 });
 
         createNotificationChannel();
+
+        Intent intent = new Intent(this, WebviewActivity.class);
+        startActivity(intent);
+
     }
 
     private void createNotificationChannel() {/*
