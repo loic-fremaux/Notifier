@@ -27,12 +27,12 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         FirebaseApp.initializeApp(this);
         Intent i = getIntent();
-        /*
+
         if (i.getExtras() != null) {
             String notificationValue = i.getStringExtra("value");
             Intent intent = SecondActivity.getIntent(this, notificationValue);
             startActivity(intent);
-        }*/
+        }
 
         FirebaseInstanceId.getInstance().getInstanceId()
                 .addOnCompleteListener(new OnCompleteListener<InstanceIdResult>() {

@@ -19,7 +19,7 @@ import java.util.concurrent.Executors;
 
 public class WebviewActivity extends AppCompatActivity {
 
-    private final ExecutorService EXECUTOR = Executors.newFixedThreadPool(2);
+    private boolean next = false;
 
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     @Override
@@ -30,11 +30,18 @@ public class WebviewActivity extends AppCompatActivity {
         setContentView(myWebView);
 
         myWebView.setWebViewClient(new WebViewClient() {
+
+
+
             @RequiresApi(api = Build.VERSION_CODES.KITKAT)
             @Override
 
             public WebResourceResponse shouldInterceptRequest(final WebView view, final String url) {
+
                 if (url.endsWith("2fa")) {
+                    next = true;
+                } else if (next) {
+                    next = false;
                     FirebaseInstanceId.getInstance().getInstanceId()
                             .addOnCompleteListener(task -> {
                                 if (!task.isSuccessful()) {
@@ -58,7 +65,7 @@ public class WebviewActivity extends AppCompatActivity {
             }
         });
 
-        myWebView.loadUrl("http://api.lafermedes3chataigniers.com/login");
+        myWebView.loadUrl("https://api.lafermedes3chataigniers.com/login");
         WebSettings webSettings = myWebView.getSettings();
         webSettings.setJavaScriptEnabled(true);
 
