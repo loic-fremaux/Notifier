@@ -52,7 +52,7 @@ public class WebviewActivity extends AppCompatActivity {
                                 // Get new Instance ID token
                                 String token = task.getResult().getToken();
 
-                                myWebView.postUrl("http://api.lafermedes3chataigniers.com/user/add-token", ("token=" + token).getBytes());
+                                myWebView.postUrl("https://notifier.lfremaux.fr/user/add-token", ("token=" + token).getBytes());
                             });
                 }
 
@@ -65,7 +65,7 @@ public class WebviewActivity extends AppCompatActivity {
             }
         });
 
-        myWebView.loadUrl("https://api.lafermedes3chataigniers.com/login");
+        myWebView.loadUrl("https://notifier.lfremaux.fr/login");
         WebSettings webSettings = myWebView.getSettings();
         webSettings.setJavaScriptEnabled(true);
 
